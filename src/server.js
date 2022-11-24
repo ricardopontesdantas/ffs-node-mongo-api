@@ -7,8 +7,9 @@ const app = express()
 
 db.connect()
 
-app.use(express.urlencoded({ extended: true }))
-app.use('/', routes)
+app.use(express.json())
+
+app.use('/api', routes)
 
 const port = process.env.PORT || 3000
 
