@@ -1,7 +1,11 @@
 const express = require('express')
+
+const db = require('./database')
 const routes = require('./routes')
 
 const app = express()
+
+db.connect()
 
 app.use(express.urlencoded({ extended: true }))
 app.use('/', routes)
