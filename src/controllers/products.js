@@ -34,8 +34,23 @@ async function put(req, res) {
     })
 }
 
+async function remove(req, res) {
+    const { id } = req.params
+
+    const product = await ProductsModel.deleteOne({ _id: id })
+
+    const message = product.deletedCount > 0 
+        ? 'removed successfully' 
+        : 'error'
+
+    res.send({
+        message,
+    })
+}
+
 module.exports ={
     get,
     post,
     put,
+    remove,
 }
